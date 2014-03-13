@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>WebGLC</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <style>
+            canvas {
+                display: inline-block;
+                border: 1px solid black;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="webglc"></div>
+        
+        <script type="plain/text" id="vertex-shader">
+            attribute vec3 aVertexPosition;
+            //attribute vec4 aVertexColor;
+
+            uniform mat4 uTranslationMatrix;
+            uniform mat4 uRotationYMatrix;
+            uniform mat4 uRotationXMatrix;
+            uniform mat4 uScaleMatrix;
+            uniform mat4 uPerspectiveMatrix;
+            uniform mat4 uModelTransformMatrix;
+
+            //varying lowp vec4 vColor;
+
+            void main(void) {
+                gl_Position = uTranslationMatrix * uRotationYMatrix * uRotationXMatrix * uScaleMatrix * uPerspectiveMatrix 
+                    * uModelTransformMatrix
+                    * vec4(aVertexPosition, 1);
+                //vColor = aVertexColor;
+            }
+        </script>
+
+        <script type="plain/text" id="fragment-shader">
+            #ifdef GL_ES
+            precision highp float;
+            #endif
+
+            uniform vec4 uColor;
+
+            void main() {
+                gl_FragColor = uColor;
+            }
+        </script>
+
+        <script type="text/javascript" src="webglc.js"></script>
+
+    </body>
+</html>

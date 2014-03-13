@@ -1,0 +1,12 @@
+{
+  "name": "WebGCL",
+  "description": "gerardobort's experimental project",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node site.js"
+  },
+  "dependencies": {
+    "express": "3.2.5"
+  }
+}
