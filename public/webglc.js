@@ -46,6 +46,15 @@ var WebGLC = function () {
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
         console.log(gl.getProgramInfoLog(program));
     }
+
 };
 
-WebGLC();
+WebGLC.prototype.getBuffer = function () {
+    var gl = this.gl,
+        buffer = new Uint8Array(gl.canvas.width * gl.canvas.height * 4);
+    gl.readPixels(0, 0, gl.canvas.width, gl.canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, buffer);
+    return buffer;
+}
+
+var webglc = new WebGLC();
+console.log(webglc.getBuffer());

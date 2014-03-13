@@ -16,7 +16,7 @@
 
         <div id="webglc"></div>
         
-        <script type="plain/text" id="vertex-shader">
+        <script type="x-shader/x-vertex" id="vertex-shader">
             attribute vec3 aVertexPosition;
             //attribute vec4 aVertexColor;
 
@@ -37,7 +37,7 @@
             }
         </script>
 
-        <script type="plain/text" id="fragment-shader">
+        <script type="x-shader/x-fragment" id="fragment-shader">
             #ifdef GL_ES
             precision highp float;
             #endif
